@@ -5,7 +5,8 @@ var Chatty = (function () {
 	let messageInput = document.getElementById('message-input');
 	let messagesArr = [];
 
-	let idCount = messagesArr.length;
+	// let idCount = messagesArr.length;
+
 	function messagesObj(id, message) {
 		this.id = id,
 		this.message = message
@@ -19,6 +20,7 @@ var Chatty = (function () {
 
 	return {
 		getInput: function() {
+			let idCount = messagesArr.length;
 			let input = messageInput.value;
 			let newMessage = new messagesObj(idCount, input);
 			messagesArr.push(newMessage);
@@ -32,9 +34,10 @@ var Chatty = (function () {
 			newP.innerText = messagesArr[messagesArr.length - 1].message;
 			messageFrame.appendChild(newP);
 		},
-    addExistingMessages: function(loadedMessages) {
+    	addExistingMessages: function(loadedMessages) {
 			loadedMessages.forEach(function(item) {
 			messagesArr.push(item);
+			Chatty.writeToPage();
 			});
 			console.log("messagesArr", messagesArr);
 		}
