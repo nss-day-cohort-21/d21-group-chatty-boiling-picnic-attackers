@@ -32,20 +32,11 @@ p.message {
 
 
 /*********  CHECKBOX TOGGLE OPTIONS  **********/
-#dark-theme-custom{
+.dark-theme-custom{
   background-color: darkslategray;
   color: white;
 }
 
-#light-theme-custom{
-  background-color: white;
-  color: black;
-}
-
-#reg-text-custom{
-  font-size: 1em;
-}
-
-#large-text-custom{
-  font-size: 1.75em;
+.large-text-custom{
+  font-size: 2em;
 }

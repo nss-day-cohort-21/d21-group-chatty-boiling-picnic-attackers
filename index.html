@@ -18,7 +18,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body class="">
     <div class="container">
       <div class="header">
         <div class="row">
@@ -32,11 +32,11 @@
           <div class="col-md-12 checkbox">
             <form>
                <label for="dark-light">
-                 <input type="checkbox" id="dark-light" name="dark-light">
+                 <input type="checkbox" class="" id="dark-light" name="dark-light" onchange="themeToggle(this)">
                  Dark theme
                </label>
                <label>
-                 <input type="checkbox" id="font-size" name="font-size">
+                 <input type="checkbox" class="" id="font-size" name="font-size" onchange="fontToggle(this)">
                  Large text
                </label>
             </form>
@@ -58,8 +58,9 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     
+    <script type="text/javascript" src="js/checkbox.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/JSONloader.js"></script>
-    
+     
   </body>
 </html>
