@@ -21,5 +21,6 @@ var Chatty = (function(loadJSON) {
 	messageRequest.open("GET", "../js/messages.json");
 	messageRequest.send();
 
+	return loadJSON;
 
 })(Chatty || {});
