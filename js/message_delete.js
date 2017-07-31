@@ -2,6 +2,16 @@ console.log("message_delete.js");
 
 var Chatty = (function(messageDelete) {
 
-function 
+	
+
+	let clearButton = document.getElementById("clear-board");
+	clearButton.addEventListener("click", function() {
+		Chatty.clearAll();
+	})
+
+
+
+
+	return messageDelete;
 
 })(Chatty || {});
