@@ -37,6 +37,7 @@ var Chatty = (function () {
 			messagesArr.push(item);
 			});
 			console.log("messagesArr", messagesArr);
+		}
 	};
 
 	
