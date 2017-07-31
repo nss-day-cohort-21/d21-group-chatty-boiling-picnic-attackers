@@ -11,12 +11,10 @@ function themeToggle(element) {
     bodyHtml.classList.add("dark-theme-custom");
     headerHtml.classList.add("dark-theme-custom");
     clearBoardBtnHtml.classList.add("dark-theme-custom");
-    buttonHtml.classList.add("dark-theme-custom");
   } else {
     bodyHtml.classList.remove("dark-theme-custom");
     headerHtml.classList.remove("dark-theme-custom");
     clearBoardBtnHtml.classList.remove("dark-theme-custom");
-    buttonHtml.classList.remove("dark-theme-custom");
   }
 }
 
