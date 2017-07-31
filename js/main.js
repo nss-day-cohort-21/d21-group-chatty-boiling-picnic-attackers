@@ -5,8 +5,6 @@ var Chatty = (function (originalChatty) {
 	let messageInput = document.getElementById('message-input');
 	let messagesArr = [];
 	let clearButton = document.getElementById("clear-board");
-	
-	// let idCount = messagesArr.length;
 
 	function messagesObj(id, message) {
 		this.id = id,
@@ -35,16 +33,17 @@ var Chatty = (function (originalChatty) {
 		},
 
 		writeToPage: function () {
-			messageInput.value = '';
+
 			let newP = document.createElement('p');
 			newP.classList.add('message');
-			newP.innerText = messagesArr[messagesArr.length - 1].message;
+			messageInput.value = '';
+			newP.id = messagesArr[messagesArr.length - 1].id;
+			newP.innerHTML = `
+					${messagesArr[messagesArr.length - 1].message}
+					<input type="button" value="Delete" class="delete-btn">
+				`;
 			messageFrame.appendChild(newP);
-			
-			let delBtn = document.createElement('input');
-			delBtn.type = "button";
-			delBtn.value = "delete";
-			messageFrame.appendChild(delBtn);
+			Chatty.deleteMessage();
 		},
 
     	addExistingMessages: function(loadedMessages) {
@@ -53,10 +52,6 @@ var Chatty = (function (originalChatty) {
 			Chatty.writeToPage();
 			});
 			console.log("messagesArr", messagesArr);
-		},
-
-		delMessage: function(){
-
 		},
 
 		clearAll : function () {
@@ -68,6 +63,6 @@ var Chatty = (function (originalChatty) {
 		}
 	};
 
-	
+
 } ());
 
