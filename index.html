@@ -18,25 +18,27 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class="">
+  <body>
     <div class="container">
       <div class="header">
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-sm-12">
             <h1>Chatty!</h1>
             <input type="text" placeholder="Enter message" id="message-input">
             <button type="button" id="clear-board">Clear message board</button>
           </div>
         </div>
+      </div>
+      <div class="container main">
         <div class="row">
           <div class="col-md-12 checkbox">
             <form>
                <label for="dark-light">
-                 <input type="checkbox" class="" id="dark-light" name="dark-light" onchange="themeToggle(this)">
+                 <input type="checkbox" id="dark-light" name="dark-light">
                  Dark theme
                </label>
                <label>
-                 <input type="checkbox" class="" id="font-size" name="font-size" onchange="fontToggle(this)">
+                 <input type="checkbox" id="font-size" name="font-size">
                  Large text
                </label>
             </form>
@@ -46,7 +48,7 @@
           <div class="col-md-12">
             <p class="messages-title">Messages:</p>
             <div id="message-frame">
-              <p class="message">I'm looking for a job as a junior software developer.</p>
+
             </div>
           </div>
         </div>
@@ -57,10 +59,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    
-    <script type="text/javascript" src="js/checkbox.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/JSONloader.js"></script>
-     
   </body>
 </html>
