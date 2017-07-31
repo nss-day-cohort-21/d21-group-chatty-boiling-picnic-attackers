@@ -1,0 +1,32 @@
+.header {
+	margin-top: 3em;
+}
+#message-frame {
+	border: 1px solid #000;
+	width: 100%;
+	min-height: 50vh;
+}
+
+.checkbox {
+	text-align: center;
+}
+
+h1 {
+	display: inline;
+}
+
+input#message-input {
+	margin: 0.5em;
+	width: 60%;
+	border: 1px solid #000;
+}
+
+
+
+p.messages-title {
+	font-size: 1.5em;
+}
+
+p.message {
+	margin: 1em;
+}
