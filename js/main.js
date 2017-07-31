@@ -1,4 +1,5 @@
 let messageInput = document.getElementById('message-input');
+let messageFrame = document.getElementById('message-frame');
 
 var Chatty = (function () {
 	let messagesArr = [];
@@ -8,6 +9,13 @@ var Chatty = (function () {
 			let input = messageInput.value;
 			messagesArr.push(input);
 			console.log("messagesArr", messagesArr);
+		},
+		writeToPage: function () {
+			messageInput.value = '';
+			let newP = document.createElement('p');
+			newP.classList.add('message');
+			newP.innerText = messagesArr[messagesArr.length - 1];
+			messageFrame.appendChild(newP);
 		}
 	};
 } ());
@@ -15,5 +23,6 @@ var Chatty = (function () {
 messageInput.addEventListener('keyup', function(e){
 	if (e.which === 13) {
 		Chatty.getInput();
+		Chatty.writeToPage();
 	}
 });
