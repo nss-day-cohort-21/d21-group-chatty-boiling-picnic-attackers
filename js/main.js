@@ -1,8 +1,14 @@
-let messageInput = document.getElementById('message-input');
-let messageFrame = document.getElementById('message-frame');
-
 var Chatty = (function () {
 	let messagesArr = [];
+	let messageFrame = document.getElementById('message-frame');
+	let messageInput = document.getElementById('message-input');
+
+	messageInput.addEventListener('keyup', function(e){
+		if (e.which === 13) {
+			Chatty.getInput();
+			Chatty.writeToPage();
+		}
+	});
 
 	return {
 		getInput: function() {
@@ -20,9 +26,3 @@ var Chatty = (function () {
 	};
 } ());
 
-messageInput.addEventListener('keyup', function(e){
-	if (e.which === 13) {
-		Chatty.getInput();
-		Chatty.writeToPage();
-	}
-});
