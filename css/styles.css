@@ -1,3 +1,4 @@
+
 .header {
 	margin-top: 3em;
 }
@@ -21,12 +22,30 @@ input#message-input {
 	border: 1px solid #000;
 }
 
-
-
 p.messages-title {
 	font-size: 1.5em;
 }
 
 p.message {
 	margin: 1em;
+}
+
+
+/*********  CHECKBOX TOGGLE OPTIONS  **********/
+#dark-theme-custom{
+  background-color: darkslategray;
+  color: white;
+}
+
+#light-theme-custom{
+  background-color: white;
+  color: black;
+}
+
+#reg-text-custom{
+  font-size: 1em;
+}
+
+#large-text-custom{
+  font-size: 1.75em;
 }
