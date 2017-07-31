@@ -33,6 +33,7 @@ var Chatty = (function () {
 			newP.classList.add('message');
 			newP.innerText = messagesArr[messagesArr.length - 1].message;
 			messageFrame.appendChild(newP);
+			
 			let delBtn = document.createElement('input');
 			delBtn.type = "button";
 			delBtn.value = "delete";
