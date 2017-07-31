@@ -33,6 +33,10 @@ var Chatty = (function () {
 			newP.classList.add('message');
 			newP.innerText = messagesArr[messagesArr.length - 1].message;
 			messageFrame.appendChild(newP);
+			let delBtn = document.createElement('input');
+			delBtn.type = "button";
+			delBtn.value = "delete";
+			messageFrame.appendChild(delBtn);
 		},
     	addExistingMessages: function(loadedMessages) {
 			loadedMessages.forEach(function(item) {
@@ -40,6 +44,10 @@ var Chatty = (function () {
 			Chatty.writeToPage();
 			});
 			console.log("messagesArr", messagesArr);
+		},
+
+		delMessage: function(){
+
 		}
 	};
 
