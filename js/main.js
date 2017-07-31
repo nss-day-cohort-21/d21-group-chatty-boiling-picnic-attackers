@@ -1,3 +1,5 @@
+console.log("main.js");
+
 var Chatty = (function () {
 	let messageFrame = document.getElementById('message-frame');
 	let messageInput = document.getElementById('message-input');
@@ -29,7 +31,14 @@ var Chatty = (function () {
 			newP.classList.add('message');
 			newP.innerText = messagesArr[messagesArr.length - 1].message;
 			messageFrame.appendChild(newP);
-		}
+		},
+    addExistingMessages: function(loadedMessages) {
+			loadedMessages.forEach(function(item) {
+			messagesArr.push(item);
+			});
+			console.log("messagesArr", messagesArr);
 	};
+
+	
 } ());
 
