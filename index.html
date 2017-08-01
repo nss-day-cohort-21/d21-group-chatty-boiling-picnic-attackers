@@ -20,6 +20,21 @@
   </head>
   <body class="">
     <div class="container">
+
+      <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <h2>Choose Your Theme Color</h2>
+            Background Color: <input type="text" id="bgColorChoice"><br>
+            <br>
+            Font Color: <input type="text" id="fontChoice"><br>
+            <br>
+            <button type="button" class="saveModal">Save</button>
+            <button type="button" id="cancelModal" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+
       <div class="header" id="header">
         <div class="row">
           <div class="col-sm-12">
@@ -30,7 +45,9 @@
         </div>
         <div class="row">
           <div class="col-md-12 checkbox">
+
             <form>
+                <button type="button" class="" data-toggle="modal" data-target=".bs-example-modal-lg">Change Theme</button>
                <label for="dark-light">
                  <input type="checkbox" id="dark-light" name="dark-light">
                  Dark theme
