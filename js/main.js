@@ -6,6 +6,7 @@ var Chatty = (function (originalChatty) {
 	let messagesArr = [];
 	let clearButton = document.getElementById("clear-board");
 	let idCount = 0;
+	let messageType = "messageNew";
 
 	function messagesObj(id, message,timestamp) {
 		this.id = id,
@@ -14,11 +15,14 @@ var Chatty = (function (originalChatty) {
 	};
 
 	messageInput.addEventListener('keyup', function(e){
-		if (e.which === 13) {
+		if (e.which === 13 && messageType === "messageNew") {
 			Chatty.getInput();
 			Chatty.writeToPage();
+		} else if (e.which === 13 && messageType === "messageEdit") {
+
 		}
 	});
+
 
 	clearButton.addEventListener("click", function() {
 		Chatty.clearAll();
@@ -40,6 +44,23 @@ var Chatty = (function (originalChatty) {
 			Chatty.writeToPage();
 		};
 		return messagesArr;
+	});
+
+	document.querySelector("body").addEventListener("click", function(event) {
+		console.log("event", event);
+		console.log("event.target", event.target);
+		console.log("event.target.className", event.target.className);
+		if (event.target.className === "edit-btn") {
+			console.log("edit-btn just triggered");
+			console.log("event.target.parentElement", event.target.parentElement);
+			console.log("event.target.parentElement.id", event.target.parentElement.id);
+			messageId = event.target.parentElement.id;
+			messageType = Chatty.sendTextToInput(messagesArr, messageId);
+			console.log("this happens after sendTextToInput triggered");
+			console.log("messageType after return from sendTextToInput", messageType);
+			// Chatty.writeToPage();
+		};
+		return messageType;
 	});
 
 	return {
@@ -64,6 +85,7 @@ var Chatty = (function (originalChatty) {
 					newP.innerHTML = `
 						${messagesArr[i].message + " " + messagesArr[i].timestamp} 
 						<input type="button" value="Delete" class="delete-btn">
+						<input type="button" value="Edit" class="edit-btn">
 						`;
 					messageFrame.appendChild(newP);
 				}
@@ -78,6 +100,7 @@ var Chatty = (function (originalChatty) {
 					newP.innerHTML = `
 							${arrayElement.message + " " + arrayElement.timestamp} 
 							<input type="button" value="Delete" class="delete-btn">
+							<input type="button" value="Edit" class="edit-btn">
 						`;
 					messageFrame.appendChild(newP);
 				});
