@@ -22,6 +22,20 @@ var Chatty = (function (originalChatty) {
 		Chatty.clearAll();
 	});
 
+	document.querySelector("body").addEventListener("click", function(event) {
+		console.log("event", event);
+		console.log("event.target", event.target);
+		console.log("event.target.className", event.target.className);
+		if (event.target.className === "delete-btn") {
+			console.log("delete-btn just triggered");
+			console.log("event.target.parentElement", event.target.parentElement);
+			console.log("event.target.parentElement.id", event.target.parentElement.id);
+			messageId = event.target.parentElement.id;
+			Chatty.deleteFromArray(messagesArr, messageId);
+		};
+
+	});
+
 	return {
 		getInput: function() {
 			let idCount = messagesArr.length;
@@ -43,7 +57,7 @@ var Chatty = (function (originalChatty) {
 					<input type="button" value="Delete" class="delete-btn">
 				`;
 			messageFrame.appendChild(newP);
-			Chatty.deleteMessage();
+			// Chatty.deleteMessage();
 		},
 
     	addExistingMessages: function(loadedMessages) {
@@ -51,7 +65,8 @@ var Chatty = (function (originalChatty) {
 			messagesArr.push(item);
 			Chatty.writeToPage();
 			});
-			console.log("messagesArr", messagesArr);
+			console.log("messagesArr in addExistingMessages", messagesArr);
+			// Chatty.tester(messagesArr);
 		},
 
 		clearAll : function () {
@@ -61,7 +76,10 @@ var Chatty = (function (originalChatty) {
 			console.log("messagesArr after clear", messagesArr);
 			messageFrame.innerHTML = ``;
 		}
+
 	};
+
+
 
 
 } ());
