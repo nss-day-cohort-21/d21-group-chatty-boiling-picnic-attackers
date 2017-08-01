@@ -1,6 +1,4 @@
-console.log("main.js");
-
-var Chatty = (function (originalChatty) {
+var Chatty = (function () {
 	let messageFrame = document.getElementById('message-frame');
 	let messageInput = document.getElementById('message-input');
 	let messagesArr = [];
@@ -9,7 +7,8 @@ var Chatty = (function (originalChatty) {
 	let messageType = "messageNew";
 	let messageEditId = 0;
 
-	function messagesObj(id, message,timestamp) {
+	function messagesObj(user, id, message,timestamp) {
+		this.user = user,
 		this.id = id,
 		this.message = message,
 		this.timestamp = timestamp
@@ -20,27 +19,16 @@ var Chatty = (function (originalChatty) {
 			Chatty.getInput();
 			Chatty.writeToPage();
 		} else if (e.which === 13 && returnFromEdit.messageType === "messageEdit") {
-			// messageEditId = Number(messageEditId);
-			console.log("messageEditId", messageEditId);
-			console.log("return triggered messageEdit path");
-			console.log("messageInput.value", messageInput.value);
-			console.log("messagesArr", messagesArr);
-			// console.log("messagesArr[messageEditId].message before update", messagesArr[messageEditId].message);
-			// messagesArr[messageEditId].message = messageInput.value;
-			// console.log("messagesArr[messageEditId].message updated with input value", messagesArr[messageEditId].message);
+
 			messagesArr.forEach(function(obj) {
 				console.log("obj.id", obj.id, "obj.message", obj.message);
 				if (obj.id == messageEditId) {
 					obj.message = messageInput.value;
-					console.log("Replacement item obj.id", obj.id, "obj.message", obj.message);
 				}
 			});
 
 			messageType = "messageNew";
 			Chatty.writeToPage();
-
-
-			console.log("messageType at end of edit process", messageType)
 		}
 	});
 
@@ -50,54 +38,32 @@ var Chatty = (function (originalChatty) {
 	});
 
 	document.querySelector("body").addEventListener("click", function(event) {
-		console.log("event", event);
-		console.log("event.target", event.target);
-		console.log("event.target.className", event.target.className);
 		if (event.target.className === "delete-btn") {
-			console.log("delete-btn just triggered");
-			console.log("event.target.parentElement", event.target.parentElement);
-			console.log("event.target.parentElement.id", event.target.parentElement.id);
 			nodeToDelete = event.target.parentElement;
 			messageId = event.target.parentElement.id;
 			messagesArr = Chatty.deleteFromArrayAndDom(messagesArr, messageId, nodeToDelete);
-			console.log("this happens after deleteFromArrayAndDom triggered");
-			console.log("messagesArr after return from deleteFromArrayAndDom", messagesArr);
 			Chatty.writeToPage();
 		};
 		return messagesArr;
 	});
 
 	document.querySelector("body").addEventListener("click", function(event) {
-		console.log("event", event);
-		console.log("event.target", event.target);
-		console.log("event.target.className", event.target.className);
 		if (event.target.className === "edit-btn") {
-			console.log("edit-btn just triggered");
-			console.log("event.target.parentElement", event.target.parentElement);
-			console.log("event.target.parentElement.id", event.target.parentElement.id);
 			messageId = event.target.parentElement.id;
-			console.log("messageId", messageId);
 			returnFromEdit = Chatty.sendTextToInput(messagesArr, messageId);
-			console.log("this happens after sendTextToInput triggered");
-			console.log("messageType after return from sendTextToInput", messageType);
-			// Chatty.writeToPage();
 			messageType = returnFromEdit.messageType;
-			console.log("messageType", messageType);
 			messageEditId = returnFromEdit.messageId;
-			console.log("messageEditId", messageEditId);
 		};
-		// return returnFromEdit;
 	});
 
 	return {
 		getInput: function() {
-			
+			let user = Chatty.getUser();//insert name of user here
 			let input = messageInput.value;
 			let timestamp = Date();
-			let newMessage = new messagesObj(idCount, input, timestamp);
+			let newMessage = new messagesObj(user, idCount, input, timestamp);
 			messagesArr.push(newMessage);
 			idCount++;
-			console.log("messagesArr", messagesArr);
 		},
 
 		writeToPage: function () {
@@ -109,7 +75,8 @@ var Chatty = (function (originalChatty) {
 					messageInput.value = '';
 					newP.id = messagesArr[i].id;
 					newP.innerHTML = `
-						${messagesArr[i].message + " " + messagesArr[i].timestamp} 
+						<strong>${messagesArr[i].user}</strong>
+						${messagesArr[i].message + " " + messagesArr[i].timestamp}
 						<input type="button" value="Delete" class="delete-btn">
 						<input type="button" value="Edit" class="edit-btn">
 						`;
@@ -124,7 +91,7 @@ var Chatty = (function (originalChatty) {
 					messageInput.value = '';
 					newP.id = arrayElement.id;
 					newP.innerHTML = `
-							${arrayElement.message + " " + arrayElement.timestamp} 
+							<strong>${arrayElement.user}: </strong>${arrayElement.message + " " + arrayElement.timestamp}
 							<input type="button" value="Delete" class="delete-btn">
 							<input type="button" value="Edit" class="edit-btn">
 						`;
@@ -138,17 +105,12 @@ var Chatty = (function (originalChatty) {
 			messagesArr.push(item);
 			});
 			Chatty.writeToPage();
-			console.log("messagesArr in addExistingMessages", messagesArr);
 			idCount = messagesArr.length;
-			console.log("idCount after printing to DOM from json messages", idCount);
 			// Chatty.tester(messagesArr);
 		},
 
 		clearAll : function () {
-			console.log("clearAll button clicked");
-			console.log("messagesArr before clear", messagesArr);
 			messagesArr = [];
-			console.log("messagesArr after clear", messagesArr);
 			messageFrame.innerHTML = ``;
 		}
 
