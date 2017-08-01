@@ -11,10 +11,7 @@ var Chatty = (function(messageDelete) {
 				deleteItem.remove();
 			});
 		}
-	};
-
-
-
+	}
 
 	return messageDelete;
 
