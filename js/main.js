@@ -64,7 +64,7 @@ var Chatty = (function (originalChatty) {
 				messageInput.value = '';
 				newP.id = arrayElement.id;
 				newP.innerHTML = `
-						${arrayElement.message}
+						${arrayElement.message + " " + arrayElement.timestamp} 
 						<input type="button" value="Delete" class="delete-btn">
 					`;
 				messageFrame.appendChild(newP);
