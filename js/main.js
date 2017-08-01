@@ -7,6 +7,7 @@ var Chatty = (function (originalChatty) {
 	let clearButton = document.getElementById("clear-board");
 	let idCount = 0;
 	let messageType = "messageNew";
+	let messageEditId = 0;
 
 	function messagesObj(id, message,timestamp) {
 		this.id = id,
@@ -18,8 +19,28 @@ var Chatty = (function (originalChatty) {
 		if (e.which === 13 && messageType === "messageNew") {
 			Chatty.getInput();
 			Chatty.writeToPage();
-		} else if (e.which === 13 && messageType === "messageEdit") {
+		} else if (e.which === 13 && returnFromEdit.messageType === "messageEdit") {
+			// messageEditId = Number(messageEditId);
+			console.log("messageEditId", messageEditId);
+			console.log("return triggered messageEdit path");
+			console.log("messageInput.value", messageInput.value);
+			console.log("messagesArr", messagesArr);
+			// console.log("messagesArr[messageEditId].message before update", messagesArr[messageEditId].message);
+			// messagesArr[messageEditId].message = messageInput.value;
+			// console.log("messagesArr[messageEditId].message updated with input value", messagesArr[messageEditId].message);
+			messagesArr.forEach(function(obj) {
+				console.log("obj.id", obj.id, "obj.message", obj.message);
+				if (obj.id == messageEditId) {
+					obj.message = messageInput.value;
+					console.log("Replacement item obj.id", obj.id, "obj.message", obj.message);
+				}
+			});
 
+			messageType = "messageNew";
+			Chatty.writeToPage();
+
+
+			console.log("messageType at end of edit process", messageType)
 		}
 	});
 
@@ -55,12 +76,17 @@ var Chatty = (function (originalChatty) {
 			console.log("event.target.parentElement", event.target.parentElement);
 			console.log("event.target.parentElement.id", event.target.parentElement.id);
 			messageId = event.target.parentElement.id;
-			messageType = Chatty.sendTextToInput(messagesArr, messageId);
+			console.log("messageId", messageId);
+			returnFromEdit = Chatty.sendTextToInput(messagesArr, messageId);
 			console.log("this happens after sendTextToInput triggered");
 			console.log("messageType after return from sendTextToInput", messageType);
 			// Chatty.writeToPage();
+			messageType = returnFromEdit.messageType;
+			console.log("messageType", messageType);
+			messageEditId = returnFromEdit.messageId;
+			console.log("messageEditId", messageEditId);
 		};
-		return messageType;
+		// return returnFromEdit;
 	});
 
 	return {

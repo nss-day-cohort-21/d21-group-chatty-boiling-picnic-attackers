@@ -3,6 +3,8 @@ console.log("message_edit.js");
 var Chatty = (function(messageEdit) {
 
 	messageEdit.sendTextToInput = function(arrayInput, messageId) {
+		let returnFromEdit = {};
+
 		// messageFrame = document.getElementById("message-frame");;
 		console.log("arrayInput", arrayInput, "messageId", messageId)
 		// console.log("arrayInput.id", arrayInput.id);
@@ -15,7 +17,8 @@ var Chatty = (function(messageEdit) {
 		console.log("arrayReturned[0].message after selection", arrayReturned[0].message);
 		document.getElementById("message-input").value = arrayReturned[0].message;
 
-		let messageType = "messageEdit";
+		returnFromEdit.messageType = "messageEdit";
+		returnFromEdit.messageId = messageId;
 
 			// arrayInput = arrayInput.filter(function( obj ) {
   	// 		return obj.id != messageId;
@@ -27,7 +30,7 @@ var Chatty = (function(messageEdit) {
 		// messageFrame.removeChild(nodeToDelete);
 		// console.log("arrayInput after delete:", arrayInput);
 
-		return messageType;
+		return returnFromEdit
 	};
 
 	return messageEdit;
