@@ -9,6 +9,7 @@ var Chatty = (function(obj){
   var modalButton = document.getElementById("saveModal");
   var fontColor = document.getElementById("fontChoice");
   var bgColorChoice = document.getElementById("bgColorChoice");
+  var bgImgChoice = document.getElementById("bgImgChoice");
 
   obj.themeToggle = function (element) {
     console.log('theme checked', element.checked);
@@ -38,6 +39,7 @@ var Chatty = (function(obj){
       bodyHtml.style.backgroundColor = bgColorChoice.value;
       bodyHtml.style.color = fontColor.value;
       buttonHtml.style.color = fontColor.value;
+      bodyHtml.style.backgroundColor = bgImgChoice.value;
     }    
   });
 
