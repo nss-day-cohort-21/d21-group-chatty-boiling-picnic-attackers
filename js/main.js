@@ -5,6 +5,7 @@ var Chatty = (function (originalChatty) {
 	let messageInput = document.getElementById('message-input');
 	let messagesArr = [];
 	let clearButton = document.getElementById("clear-board");
+	let idCount = 0;
 
 	function messagesObj(id, message) {
 		this.id = id,
@@ -41,7 +42,7 @@ var Chatty = (function (originalChatty) {
 
 	return {
 		getInput: function() {
-			let idCount = messagesArr.length;
+			
 			let input = messageInput.value;
 			let newMessage = new messagesObj(idCount, input);
 			messagesArr.push(newMessage);
@@ -69,6 +70,7 @@ var Chatty = (function (originalChatty) {
 			Chatty.writeToPage();
 			});
 			console.log("messagesArr in addExistingMessages", messagesArr);
+			idCount = messagesArr.length;
 			// Chatty.tester(messagesArr);
 		},
 
