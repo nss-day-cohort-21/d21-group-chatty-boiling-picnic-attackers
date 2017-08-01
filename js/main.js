@@ -30,8 +30,11 @@ var Chatty = (function (originalChatty) {
 			console.log("delete-btn just triggered");
 			console.log("event.target.parentElement", event.target.parentElement);
 			console.log("event.target.parentElement.id", event.target.parentElement.id);
+			nodeToDelete = event.target.parentElement;
 			messageId = event.target.parentElement.id;
-			Chatty.deleteFromArray(messagesArr, messageId);
+			messagesArr = Chatty.deleteFromArrayAndDom(messagesArr, messageId, nodeToDelete);
+			console.log("this happens after deleteFromArrayAndDom triggered");
+			console.log("messagesArr after return from deleteFromArrayAndDom", messagesArr);
 		};
 
 	});
