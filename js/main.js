@@ -5,10 +5,12 @@ var Chatty = (function (originalChatty) {
 	let messageInput = document.getElementById('message-input');
 	let messagesArr = [];
 	let clearButton = document.getElementById("clear-board");
+	let idCount = 0;
 
-	function messagesObj(id, message) {
+	function messagesObj(id, message,timestamp) {
 		this.id = id,
-		this.message = message
+		this.message = message,
+		this.timestamp = timestamp
 	};
 
 	messageInput.addEventListener('keyup', function(e){
@@ -30,17 +32,20 @@ var Chatty = (function (originalChatty) {
 			console.log("delete-btn just triggered");
 			console.log("event.target.parentElement", event.target.parentElement);
 			console.log("event.target.parentElement.id", event.target.parentElement.id);
+			nodeToDelete = event.target.parentElement;
 			messageId = event.target.parentElement.id;
-			Chatty.deleteFromArray(messagesArr, messageId);
+			messagesArr = Chatty.deleteFromArrayAndDom(messagesArr, messageId, nodeToDelete);
+			console.log("this happens after deleteFromArrayAndDom triggered");
+			console.log("messagesArr after return from deleteFromArrayAndDom", messagesArr);
 		};
 
 	});
 
 	return {
 		getInput: function() {
-			let idCount = messagesArr.length;
 			let input = messageInput.value;
-			let newMessage = new messagesObj(idCount, input);
+			let timestamp = Date();
+			let newMessage = new messagesObj(idCount, input, timestamp);
 			messagesArr.push(newMessage);
 			idCount++;
 			console.log("messagesArr", messagesArr);
@@ -53,10 +58,13 @@ var Chatty = (function (originalChatty) {
 			messageInput.value = '';
 			newP.id = messagesArr[messagesArr.length - 1].id;
 			newP.innerHTML = `
-					${messagesArr[messagesArr.length - 1].message}
+					${messagesArr[messagesArr.length - 1].message + " " + messagesArr[messagesArr.length - 1].timestamp}
 					<input type="button" value="Delete" class="delete-btn">
 				`;
 			messageFrame.appendChild(newP);
+			// newCount += 1;
+		  // console.log('newCount', newCount);
+			
 			// Chatty.deleteMessage();
 		},
 
@@ -66,6 +74,8 @@ var Chatty = (function (originalChatty) {
 			Chatty.writeToPage();
 			});
 			console.log("messagesArr in addExistingMessages", messagesArr);
+			idCount = messagesArr.length;
+			
 			// Chatty.tester(messagesArr);
 		},
 
