@@ -1,6 +1,7 @@
 console.log("message_delete.js");
 
 var Chatty = (function(messageDelete) {
+<<<<<<< HEAD
 	let deleteBtns = document.getElementsByClassName('delete-btn');
 	console.log("deleteBtns", deleteBtns);
 	messageDelete.deleteMessage = function() {
@@ -12,6 +13,13 @@ var Chatty = (function(messageDelete) {
 			});
 		}
 	}
+=======
+
+	messageDelete.deleteFromArray = function(arrayInput, messageId) {
+		console.log("messageId:", messageId, "arrayInput:", arrayInput);
+
+	};
+>>>>>>> 56820f488e4107f862bd3a6dd8ecf4175d8586e7
 
 	return messageDelete;
 
