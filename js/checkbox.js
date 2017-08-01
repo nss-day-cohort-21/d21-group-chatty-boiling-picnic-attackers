@@ -32,12 +32,21 @@ var Chatty = (function(obj){
 
   document.querySelector("body").addEventListener("click", function(event) {
     if (event.target.className === "saveModal") {
-      console.log("Save button just triggered.");
       headerHtml.style.backgroundColor = bgColorChoice.value;
       headerHtml.style.color = fontColor.value;
       bodyHtml.style.backgroundColor = bgColorChoice.value;
       bodyHtml.style.color = fontColor.value;
       buttonHtml.style.color = fontColor.value;
+    }    
+  });
+
+  document.querySelector("body").addEventListener("click", function(event) {
+    if (event.target.className === "clearTheme") {
+      headerHtml.style.backgroundColor = "";
+      headerHtml.style.color = "";
+      bodyHtml.style.backgroundColor = "";
+      bodyHtml.style.color = "";
+      buttonHtml.style.color = "";
     }    
   });
 
