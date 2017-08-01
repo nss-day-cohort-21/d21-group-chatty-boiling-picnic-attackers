@@ -36,8 +36,9 @@ var Chatty = (function (originalChatty) {
 			messagesArr = Chatty.deleteFromArrayAndDom(messagesArr, messageId, nodeToDelete);
 			console.log("this happens after deleteFromArrayAndDom triggered");
 			console.log("messagesArr after return from deleteFromArrayAndDom", messagesArr);
+			Chatty.writeToPage();
 		};
-
+		return messagesArr;
 	});
 
 	return {
@@ -51,26 +52,31 @@ var Chatty = (function (originalChatty) {
 		},
 
 		writeToPage: function () {
+			messageFrame.innerHTML = ``;
+			messagesArr.forEach(function (arrayElement) {
+				console.log("element.id", arrayElement.id);
+				console.log("element.message", arrayElement.message);
 
-			let newP = document.createElement('p');
-			newP.classList.add('message');
-			messageInput.value = '';
-			newP.id = messagesArr[messagesArr.length - 1].id;
-			newP.innerHTML = `
-					${messagesArr[messagesArr.length - 1].message}
-					<input type="button" value="Delete" class="delete-btn">
-				`;
-			messageFrame.appendChild(newP);
-			// Chatty.deleteMessage();
+				let newP = document.createElement('p');
+				newP.classList.add('message');
+				messageInput.value = '';
+				newP.id = arrayElement.id;
+				newP.innerHTML = `
+						${arrayElement.message}
+						<input type="button" value="Delete" class="delete-btn">
+					`;
+				messageFrame.appendChild(newP);
+			});
 		},
 
     	addExistingMessages: function(loadedMessages) {
 			loadedMessages.forEach(function(item) {
 			messagesArr.push(item);
-			Chatty.writeToPage();
 			});
+			Chatty.writeToPage();
 			console.log("messagesArr in addExistingMessages", messagesArr);
 			idCount = messagesArr.length;
+			console.log("idCount after printing to DOM from json messages", idCount);
 			// Chatty.tester(messagesArr);
 		},
 
