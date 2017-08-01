@@ -7,9 +7,10 @@ var Chatty = (function (originalChatty) {
 	let clearButton = document.getElementById("clear-board");
 	let idCount = 0;
 
-	function messagesObj(id, message) {
+	function messagesObj(id, message,timestamp) {
 		this.id = id,
-		this.message = message
+		this.message = message,
+		this.timestamp = timestamp
 	};
 
 	messageInput.addEventListener('keyup', function(e){
@@ -45,7 +46,8 @@ var Chatty = (function (originalChatty) {
 		getInput: function() {
 			
 			let input = messageInput.value;
-			let newMessage = new messagesObj(idCount, input);
+			let timestamp = Date();
+			let newMessage = new messagesObj(idCount, input, timestamp);
 			messagesArr.push(newMessage);
 			idCount++;
 			console.log("messagesArr", messagesArr);
@@ -62,7 +64,7 @@ var Chatty = (function (originalChatty) {
 				messageInput.value = '';
 				newP.id = arrayElement.id;
 				newP.innerHTML = `
-						${arrayElement.message}
+						${arrayElement.message + " " + arrayElement.timestamp} 
 						<input type="button" value="Delete" class="delete-btn">
 					`;
 				messageFrame.appendChild(newP);
