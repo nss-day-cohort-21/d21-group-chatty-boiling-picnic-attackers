@@ -6,6 +6,9 @@ var Chatty = (function(obj){
   var headerHtml = document.getElementById("header");
   var clearBoardBtnHtml = document.getElementById("clear-board");
   var buttonHtml = document.getElementsByClassName("delete-btn");
+  var modalButton = document.getElementById("saveModal");
+  var fontColor = document.getElementById("fontChoice");
+  var bgColorChoice = document.getElementById("bgColorChoice");
 
   obj.themeToggle = function (element) {
     console.log('theme checked', element.checked);
@@ -26,6 +29,17 @@ var Chatty = (function(obj){
       bodyHtml.classList.remove("large-text-custom");
     }
   }
+
+  document.querySelector("body").addEventListener("click", function(event) {
+    if (event.target.className === "saveModal") {
+      console.log("Save button just triggered.");
+      headerHtml.style.backgroundColor = bgColorChoice.value;
+      headerHtml.style.color = fontColor.value;
+      bodyHtml.style.backgroundColor = bgColorChoice.value;
+      bodyHtml.style.color = fontColor.value;
+      buttonHtml.style.color = fontColor.value;
+    }    
+  });
 
   theme.addEventListener('change', function() {
     Chatty.themeToggle(this);
