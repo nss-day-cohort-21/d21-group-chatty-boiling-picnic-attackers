@@ -55,20 +55,33 @@ var Chatty = (function (originalChatty) {
 
 		writeToPage: function () {
 			messageFrame.innerHTML = ``;
-			messagesArr.forEach(function (arrayElement) {
-				console.log("element.id", arrayElement.id);
-				console.log("element.message", arrayElement.message);
-
-				let newP = document.createElement('p');
-				newP.classList.add('message');
-				messageInput.value = '';
-				newP.id = arrayElement.id;
-				newP.innerHTML = `
-						${arrayElement.message + " " + arrayElement.timestamp} 
+			if (messagesArr.length > 20) {
+				for (var i = (messagesArr.length - 20); i < messagesArr.length; i++) {
+					let newP = document.createElement('p');
+					newP.classList.add('message');
+					messageInput.value = '';
+					newP.id = messagesArr[i].id;
+					newP.innerHTML = `
+						${messagesArr[i].message + " " + messagesArr[i].timestamp} 
 						<input type="button" value="Delete" class="delete-btn">
-					`;
-				messageFrame.appendChild(newP);
-			});
+						`;
+					messageFrame.appendChild(newP);
+				}
+			} else {
+				messagesArr.forEach(function (arrayElement) {
+					console.log("element.id", arrayElement.id);
+					console.log("element.message", arrayElement.message);
+					let newP = document.createElement('p');
+					newP.classList.add('message');
+					messageInput.value = '';
+					newP.id = arrayElement.id;
+					newP.innerHTML = `
+							${arrayElement.message + " " + arrayElement.timestamp} 
+							<input type="button" value="Delete" class="delete-btn">
+						`;
+					messageFrame.appendChild(newP);
+				});
+			}
 		},
 
     	addExistingMessages: function(loadedMessages) {
