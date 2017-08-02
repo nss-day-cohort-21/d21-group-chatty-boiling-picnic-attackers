@@ -19,6 +19,9 @@ var Chatty = (function () {
 		if (e.which === 13 && messageType === "messageNew") {
 			Chatty.getInput();
 			Chatty.writeToPage();
+			if (idCount > 0) {
+				Chatty.enableClear();
+			}
 		} else if (e.which === 13 && returnFromEdit.messageType === "messageEdit") {
 
 			messagesArr.forEach(function(obj) {
@@ -81,7 +84,7 @@ var Chatty = (function () {
 					newP.innerHTML = `
 						<img src="${messagesArr[i].pic}" alt="${messagesArr[i].user}">
 						<strong>${messagesArr[i].user}</strong><br>
-						${messagesArr[i].message} + " " + <h6>${messagesArr[i].timestamp}</h6>
+						${messagesArr[i].message}<h6>${messagesArr[i].timestamp}</h6>
 						<input type="button" value="Delete" class="delete-btn">
 						<input type="button" value="Edit" class="edit-btn">
 						`;
@@ -97,7 +100,7 @@ var Chatty = (function () {
 					newP.id = arrayElement.id;
 					newP.innerHTML = `
 							<img src="${arrayElement.pic}" alt="${arrayElement.user}">
-							<strong>${arrayElement.user}: </strong><br>${arrayElement.message} + " " + <h6>${arrayElement.timestamp}</h6>
+							<strong>${arrayElement.user}: </strong><br>${arrayElement.message}<h6>${arrayElement.timestamp}</h6>
 							<input type="button" value="Delete" class="delete-btn">
 							<input type="button" value="Edit" class="edit-btn">
 						`;
@@ -118,6 +121,11 @@ var Chatty = (function () {
 		clearAll : function () {
 			messagesArr = [];
 			messageFrame.innerHTML = ``;
+			clearButton.setAttribute('disabled', true);
+		},
+
+		enableClear: function () {
+			clearButton.removeAttribute('disabled');
 		}
 
 	};
