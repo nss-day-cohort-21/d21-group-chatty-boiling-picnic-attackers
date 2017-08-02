@@ -61,11 +61,13 @@ var Chatty = (function () {
 		getInput: function() {
 			let pic = Chatty.getUserPic(Chatty.getUser()); //attach profile image to message
 			let user = Chatty.getUser();//insert name of user here
-			let input = messageInput.value;
+			let input = Chatty.testForScript(messageInput.value);  //messageInput.value;   //check if message is valid
 			let timestamp = Date();
-			let newMessage = new messagesObj(pic, user, idCount, input, timestamp);
-			messagesArr.push(newMessage);
-			idCount++;
+			if (input !== '') {
+				let newMessage = new messagesObj(pic, user, idCount, input, timestamp);
+				messagesArr.push(newMessage);
+				idCount++;
+			}
 		},
 
 		writeToPage: function () {
