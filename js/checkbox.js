@@ -38,8 +38,8 @@ var Chatty = (function(obj){
       bodyHtml.style.color = fontColor.value;
       bodyHtml.style.backgroundImage = "url('" + bgImgChoice.value + "')";
     }
-    if (bodyHtml.style.backgroundImage != " "){
-      headerHtml.style.backgroundColor = "rgba(0,0,0,0)";
+    if (bodyHtml.style.backgroundImage != ""){
+      headerHtml.style.backgroundColor = "rgba(0,0,0,0.3)";
     }
   });
 
