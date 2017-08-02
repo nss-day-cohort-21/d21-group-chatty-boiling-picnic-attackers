@@ -12,7 +12,7 @@ html{
 }
 
 .main {
-	margin-top: 9em;
+	margin-top: 12em;
 }
 
 #message-frame {
@@ -38,6 +38,7 @@ input#message-input {
 
 p.messages-title {
 	font-size: 1.5em;
+	margin-left: 2em;
 }
 
 p.message {
