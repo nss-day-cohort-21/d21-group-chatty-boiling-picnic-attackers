@@ -9,7 +9,7 @@ var Chatty = (function(loadJSON) {
 		messageRequest.addEventListener("load", messageRequestComplete);
 		messageRequest.addEventListener("error", messageRequestFailed);
 
-		let loadedMessages;
+		let loadedMessage;
 		let objectHolder;
 		let messageHolder = [];
 		let i = 0;
@@ -24,11 +24,11 @@ var Chatty = (function(loadJSON) {
 			if (event.target.status === 200) {
 				console.log("message loaded successfully");
 				console.log(theURL)
-				loadedMessages = JSON.parse(event.target.responseText);
-				console.log("loadedMessages", loadedMessages);
-				console.log(loadedMessages[0]);
+				loadedMessage = JSON.parse(event.target.responseText);
+				console.log("loadedMessage", loadedMessage);
+				console.log(loadedMessage[0]);
 				// objectHolder = loadedMessages[0];
-				messageHolder.push(loadedMessages[0]);
+				messageHolder.push(loadedMessage[0]);
 				console.log("messageHolder", messageHolder);
 				i++;
 				theURL = "../json/message" + i + ".json"
