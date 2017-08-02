@@ -49,6 +49,8 @@ var Chatty = (function(obj){
       headerHtml.style.color = "";
       bodyHtml.style.backgroundColor = "";
       bodyHtml.style.color = "";
+      bodyHtml.style.backgroundImage = "";
+      headerHtml.style.backgroundColor = "";
     }    
   });
 
