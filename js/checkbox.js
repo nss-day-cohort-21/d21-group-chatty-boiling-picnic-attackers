@@ -36,8 +36,11 @@ var Chatty = (function(obj){
       bodyHtml.style.backgroundColor = bgColorChoice.value;
       headerHtml.style.color = fontColor.value;
       bodyHtml.style.color = fontColor.value;
-      bodyHtml.backgroundImage = `url(${bgImgChoice.value})`;
-    }    
+      bodyHtml.style.backgroundImage = "url('" + bgImgChoice.value + "')";
+    }
+    if (bodyHtml.style.backgroundImage != " "){
+      headerHtml.style.backgroundColor = "rgba(0,0,0,0)";
+    }
   });
 
   document.querySelector("body").addEventListener("click", function(event) {
