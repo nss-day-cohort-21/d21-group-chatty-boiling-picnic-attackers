@@ -6,13 +6,24 @@ html{
 .header {
 	position: fixed;
 	width: 80%;
+	margin: 0 auto;
 	z-index: 10;
   padding-top: 1em;
   background-color: white;
 }
 
 .main {
-	margin-top: 9em;
+	margin-top: 12em;
+}
+@media (max-width:727px){
+	.main {
+		margin-top: 14em;
+	}
+}
+@media (max-width:519px){
+	.main {
+		margin-top: 16.5em;
+	}
 }
 
 #message-frame {
@@ -38,6 +49,7 @@ input#message-input {
 
 p.messages-title {
 	font-size: 1.5em;
+	margin-left: 2em;
 }
 
 p.message {
