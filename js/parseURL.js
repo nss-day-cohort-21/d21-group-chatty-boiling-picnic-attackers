@@ -6,13 +6,13 @@ var Chatty = (function(searchURL){
 
 			message = message.replace(httpRegex, function(inputURL) {
 				inputURL = inputURL.replace(/ /g, "");
-				let convertedText = ' <a href="' + inputURL + '"">' + inputURL + '</a> ';
+				let convertedText = ' <a href="' + inputURL + '" target="_">' + inputURL + '</a> ';
 				return convertedText;
 			});
 
 			message = message.replace(wwwRegex, function(inputURL) {
 				inputURL = inputURL.replace(/ /g, "");
-				let convertedText = ' <a href="http://' + inputURL + '">' + inputURL + '</a> ';
+				let convertedText = ' <a href="http://' + inputURL + '" target="_">' + inputURL + '</a> ';
 				return convertedText;
 			});
 
