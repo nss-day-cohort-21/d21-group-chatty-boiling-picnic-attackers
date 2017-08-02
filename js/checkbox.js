@@ -36,7 +36,7 @@ var Chatty = (function(obj){
       bodyHtml.style.backgroundColor = bgColorChoice.value;
       headerHtml.style.color = fontColor.value;
       bodyHtml.style.color = fontColor.value;
-      bodyHtml.style.backgroundImage = `url(${bgImgChoice.value})`;
+      bodyHtml.backgroundImage = `url(${bgImgChoice.value})`;
     }    
   });
 
