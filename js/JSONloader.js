@@ -1,8 +1,6 @@
-console.log("JSONloader.js");
-
 var Chatty = (function(loadJSON) {
 
-	Chatty.loadMessages = function(pull) {	
+	loadJSON.loadMessages = function(pull) {
 
 		let messageRequest = new XMLHttpRequest();
 
