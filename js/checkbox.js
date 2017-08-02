@@ -4,8 +4,7 @@ var Chatty = (function(obj){
   var fontSize = document.getElementById("font-size");
   var bodyHtml = document.querySelector("body");
   var headerHtml = document.getElementById("header");
-  var clearBoardBtnHtml = document.getElementById("clear-board");
-  var buttonHtml = document.getElementsByClassName("delete-btn");
+  var modalContent = document.getElementById("modal-content");
   var modalButton = document.getElementById("saveModal");
   var fontColor = document.getElementById("fontChoice");
   var bgColorChoice = document.getElementById("bgColorChoice");
@@ -16,11 +15,11 @@ var Chatty = (function(obj){
     if (element.checked === true){
       bodyHtml.classList.add("dark-theme-custom");
       headerHtml.classList.add("dark-theme-custom");
-      clearBoardBtnHtml.classList.add("dark-theme-custom");
+      modalContent.classList.add("dark-theme-custom");
     } else {
       bodyHtml.classList.remove("dark-theme-custom");
       headerHtml.classList.remove("dark-theme-custom");
-      clearBoardBtnHtml.classList.remove("dark-theme-custom");
+      modalContent.classList.remove("dark-theme-custom");
     }
   }
   obj.fontToggle = function (element) {
@@ -34,10 +33,9 @@ var Chatty = (function(obj){
   document.querySelector("body").addEventListener("click", function(event) {
     if (event.target.className === "saveModal") {
       headerHtml.style.backgroundColor = bgColorChoice.value;
-      headerHtml.style.color = fontColor.value;
       bodyHtml.style.backgroundColor = bgColorChoice.value;
+      headerHtml.style.color = fontColor.value;
       bodyHtml.style.color = fontColor.value;
-      buttonHtml.style.color = fontColor.value;
       bodyHtml.style.backgroundImage = `url(${bgImgChoice.value})`;
     }    
   });
@@ -48,7 +46,6 @@ var Chatty = (function(obj){
       headerHtml.style.color = "";
       bodyHtml.style.backgroundColor = "";
       bodyHtml.style.color = "";
-      buttonHtml.style.color = "";
     }    
   });
 
