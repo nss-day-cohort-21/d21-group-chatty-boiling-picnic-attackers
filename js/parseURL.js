@@ -5,12 +5,14 @@ var Chatty = (function(searchURL){
 		let wwwRegex = /(^|[^\/f])(www\.[\S]+(\b|$))/gim;
 
 			message = message.replace(httpRegex, function(inputURL) {
-				let convertedText = ' <a href="' + inputURL + '">' + inputURL + '</a> ';
+				inputURL = inputURL.replace(/ /g, "");
+				let convertedText = ' <a href="' + inputURL + '"">' + inputURL + '</a> ';
 				return convertedText;
 			});
 
 			message = message.replace(wwwRegex, function(inputURL) {
-				let convertedText = ' <a href="' + inputURL + '">' + inputURL + '</a> ';
+				inputURL = inputURL.replace(/ /g, "");
+				let convertedText = ' <a href="http://' + inputURL + '">' + inputURL + '</a> ';
 				return convertedText;
 			});
 
