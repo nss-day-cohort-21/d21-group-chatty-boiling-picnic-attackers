@@ -64,7 +64,7 @@ var Chatty = (function () {
 		getInput: function() {
 			let pic = Chatty.getUserPic(Chatty.getUser()); //attach profile image to message
 			let user = Chatty.getUser();//insert name of user here
-			let input = Chatty.testForScript(messageInput.value);  //messageInput.value;   //check if message is valid
+			let input = Chatty.findAndRepURL(Chatty.testForScript(messageInput.value));  //messageInput.value;   //check if message is valid;  //find and convert URL in message;
 			let timestamp = Chatty.getTimestamp();
 			if (input !== '') {
 				let newMessage = new messagesObj(pic, user, idCount, input, timestamp);
