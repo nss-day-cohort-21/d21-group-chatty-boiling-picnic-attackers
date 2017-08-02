@@ -7,7 +7,8 @@ var Chatty = (function () {
 	let messageType = "messageNew";
 	let messageEditId = 0;
 
-	function messagesObj(user, id, message,timestamp) {
+	function messagesObj(pic, user, id, message,timestamp) {
+		this.pic = pic
 		this.user = user,
 		this.id = id,
 		this.message = message,
@@ -58,10 +59,11 @@ var Chatty = (function () {
 
 	return {
 		getInput: function() {
+			let pic = Chatty.getUserPic(Chatty.getUser()); //attach profile image to message
 			let user = Chatty.getUser();//insert name of user here
 			let input = messageInput.value;
 			let timestamp = Date();
-			let newMessage = new messagesObj(user, idCount, input, timestamp);
+			let newMessage = new messagesObj(pic, user, idCount, input, timestamp);
 			messagesArr.push(newMessage);
 			idCount++;
 		},
@@ -75,7 +77,8 @@ var Chatty = (function () {
 					messageInput.value = '';
 					newP.id = messagesArr[i].id;
 					newP.innerHTML = `
-						<strong>${messagesArr[i].user}</strong>
+						<img src="${messagesArr[i].pic}" alt="${messagesArr[i].user}">
+						<strong>${messagesArr[i].user}</strong><br>
 						${messagesArr[i].message + " " + messagesArr[i].timestamp}
 						<input type="button" value="Delete" class="delete-btn">
 						<input type="button" value="Edit" class="edit-btn">
@@ -91,7 +94,8 @@ var Chatty = (function () {
 					messageInput.value = '';
 					newP.id = arrayElement.id;
 					newP.innerHTML = `
-							<strong>${arrayElement.user}: </strong>${arrayElement.message + " " + arrayElement.timestamp}
+							<img src="${arrayElement.pic}" alt="${arrayElement.user}">
+							<strong>${arrayElement.user}: </strong><br>${arrayElement.message + " " + arrayElement.timestamp}
 							<input type="button" value="Delete" class="delete-btn">
 							<input type="button" value="Edit" class="edit-btn">
 						`;
