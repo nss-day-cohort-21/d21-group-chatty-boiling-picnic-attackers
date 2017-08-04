@@ -1,0 +1,41 @@
+[
+  {
+  	"id": 0,
+    "user": "Sven",
+    "pic": "/img/sven.jpeg",
+    "message": "Check out our new message board brought to you by Boiling Picnic Attackers",
+    "timestamp": "Mon Jul 31 2017 13:34:40 GMT-0500 (CDT)"
+  },
+
+  {
+  	"id": 1,
+    "user": "Mackenzie",
+    "pic": "/img/mackenzie.jpeg",
+    "message": "We are looking for new members of our team.  If you want to join, please send us an email.",
+    "timestamp": "Mon Jul 31 2017 13:44:40 GMT-0500 (CDT)"
+  },
+
+  {
+  	"id": 2,
+    "user": "Joanna",
+    "pic": "/img/joanna.jpeg",
+    "message": "Going to Mars can be easy. Find your weekly Mars planner meet up to find out more information.",
+    "timestamp": "Mon Jul 31 2017 13:54:40 GMT-0500 (CDT)"
+  },
+
+  {
+  	"id": 3,
+    "user": "Xavier",
+    "pic": "/img/xavier.jpeg",
+    "message": "Buy a movie ticket bundle to save money going to the movies.  Transformers 17 in theaters now!",
+    "timestamp": "Mon Jul 31 2017 14:04:40 GMT-0500 (CDT)"
+  },
+
+  { "id": 4,
+    "user": "Iveta",
+    "pic": "/img/iveta.jpeg",
+    "message": "Can't live in your polyamorous marriage any longer?  Try out counseling and divorce services from Polly S. Plicer and Company.",
+    "timestamp": "Mon Jul 31 2017 14:14:40 GMT-0500 (CDT)"
+  }
+
+]
