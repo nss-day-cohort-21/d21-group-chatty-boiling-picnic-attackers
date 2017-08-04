@@ -1,0 +1,28 @@
+{
+  "name": "chatty-message-app",
+  "version": "1.0.0",
+  "description": "A Message Posting App created with Jquery",
+  "main": "index.html",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsheridanwells/Chatty-Message-App.git"
+  },
+  "author": "Jeremy Sheridan Wells",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jsheridanwells/Chatty-Message-App/issues"
+  },
+  "homepage": "https://github.com/jsheridanwells/Chatty-Message-App#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "matchdep": "^1.0.1"
+  }
+}
